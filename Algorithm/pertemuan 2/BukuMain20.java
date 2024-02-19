@@ -1,4 +1,3 @@
-package Pertemuan2;
 public class BukuMain20{
     public static void main(String[] args) {
         Buku20 bk1 = new Buku20(null, null, 0, 0, 0);

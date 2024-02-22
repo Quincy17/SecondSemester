@@ -15,5 +15,9 @@ public class BukuMain20{
         Buku20 bk2 = new Buku20("Self Reward","Maheera Ayesha",160,29,59000);
         bk2.terjual(11);
         bk2.tampilInformasi();
+
+        Buku20 bk3 = new Buku20("Psychology of Money", "Morgan Housel", 256, 24, 90000);
+        bk3.terjual(21);
+        bk3.tampilInformasi();
     }
 }

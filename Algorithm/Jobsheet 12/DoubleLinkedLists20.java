@@ -55,38 +55,36 @@ public class DoubleLinkedLists20 {
     }
 
     public void add(int index, int item, int jarak) {
-        if (isEmpty()) {
+        if (index == 0) {
             addFirst(item, jarak);
         } else if (index < 0 || index > size) {
             System.out.println("Nilai indeks diluar batas");
-            return;
         } else {
             Node20 current = head;
-            int i = 0;
-            while (i < index) {
+            for (int i = 0; i < index; i++) {
                 current = current.next;
-                i++;
             }
-            Node20 newNode = new Node20(current.prev, item, jarak, current.next);
-            newNode.prev = current.prev;
-            newNode.next = current;
-            current.prev.next = newNode;
+            Node20 newNode = new Node20(current.prev, item, jarak, current);
+            if (current.prev != null) {
+                current.prev.next = newNode;
+            }
             current.prev = newNode;
             size++;
         }
     }
-    public void remove(int index) {
+    public void remove(int item) {
         Node20 current = head;
-        while(current!=null){
-            if(current.data==index){
-                if(current.prev!=null){
-                    current.prev.next=current.next;
-                }else{
-                    head=current.next;
+        while(current != null){
+            if(current.data == item){
+                if(current.prev != null){
+                    current.prev.next = current.next;
+                } else {
+                    head = current.next;
                 }
-                if(current.next!=null){
-                    current.next.prev=current.prev;
+                if(current.next != null){
+                    current.next.prev = current.prev;
                 }
+                size--;
                 break;
             }
             current = current.next;
@@ -102,5 +100,18 @@ public class DoubleLinkedLists20 {
             tmp=tmp.next;
         }
         return tmp.data;
+    }
+
+    public void setJarak(int index, int jarak) {
+        Node20 temp = head;
+        int count = 0;
+        while (temp != null) {
+            if (count == index) {
+                temp.jarak = jarak;
+                break;
+            }
+            count++;
+            temp = temp.next;
+        }
     }
 }
